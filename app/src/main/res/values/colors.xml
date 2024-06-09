@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
     <color name="orange">#FF5722</color>
+    <color name="red">#F02E00</color>
+    <color name="grey">#ff424242</color>
 
 </resources>
