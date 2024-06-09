@@ -6,10 +6,14 @@
         android:id="@+id/search"
         android:icon="@drawable/baseline_search_24"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        app:showAsAction="ifRoom"/>
 
     <item android:title="perfil"
         android:id="@+id/pefil"
         android:icon="@drawable/baseline_person_24"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom|collapseActionView"/>
+    <item android:title="cuenta"
+        android:id="@+id/cuenta"/>
+    <item android:title="cerra session"
+        android:id="@+id/cerrar"/>
 </menu>
