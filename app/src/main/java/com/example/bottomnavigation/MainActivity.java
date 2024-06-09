@@ -29,22 +29,31 @@ public class MainActivity extends AppCompatActivity {
                    replaceFragment(new HomeFragment());
                    break;
 
-               case R.id.shorts:
-                   replaceFragment(new ShortsFragment());
+               case R.id.profile:
+                   replaceFragment(new ProfileFragment());
                    break;
 
-               case R.id.subscriptions:
-                   replaceFragment(new SubscriptionFragment());
+               case R.id.cart:
+                   replaceFragment(new CartFragment());
                    break;
 
-               case R.id.library:
-                   replaceFragment(new LibraryFragment());
+               case R.id.map:
+                   replaceFragment(new MapsFragment());
+                   break;
+
+               case R.id.settings:
+                   replaceFragment(new SettingsFragment());
                    break;
            }
 
            return true;
 
        });
+
+        binding.floatingActionButton.setOnClickListener(v -> {
+            replaceFragment(new CartFragment());
+            binding.bottomNavigationView.setSelectedItemId(R.id.cart);
+        });
 
     }
 

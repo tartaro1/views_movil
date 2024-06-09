@@ -7,23 +7,22 @@
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item
-        android:id="@+id/shorts"
-        android:title="Shorts"
-        android:icon="@drawable/ic_baseline_whatshot_24"/>
+        android:id="@+id/profile"
+        android:title="profile"
+        android:icon="@drawable/baseline_person_24"/>
 
     <item
-        android:id="@+id/fab"
-        android:title=""
-        android:enabled="false"/>
+        android:id="@+id/cart"
+        android:title="" />
 
     <item
-        android:id="@+id/subscriptions"
-        android:title="Subscriptions"
-        android:icon="@drawable/ic_baseline_subscriptions_24"/>
+        android:id="@+id/map"
+        android:title="maps"
+        android:icon="@drawable/baseline_map_24"/>
 
     <item
-        android:id="@+id/library"
-        android:title="Library"
-        android:icon="@drawable/ic_baseline_video_library_24"/>
+        android:id="@+id/settings"
+        android:title="settings"
+        android:icon="@drawable/baseline_settings_24"/>
 
 </menu>
