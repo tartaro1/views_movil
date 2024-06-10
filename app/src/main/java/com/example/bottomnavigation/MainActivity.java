@@ -7,6 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.bottomnavigation.Fragment.CartFragment;
+import com.example.bottomnavigation.Fragment.DashFragment;
+import com.example.bottomnavigation.Fragment.HomeFragment;
+import com.example.bottomnavigation.Fragment.MapsFragment;
+import com.example.bottomnavigation.Fragment.ProfileFragment;
 import com.example.bottomnavigation.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                    break;
 
                case R.id.settings:
-                   replaceFragment(new SettingsFragment());
+                   replaceFragment(new DashFragment());
                    break;
            }
 

@@ -1,4 +1,4 @@
-package com.example.bottomnavigation;
+package com.example.bottomnavigation.Fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -22,7 +22,7 @@
 
     <item
         android:id="@+id/settings"
-        android:title="settings"
-        android:icon="@drawable/baseline_settings_24"/>
+        android:title="dashboard"
+        android:icon="@drawable/baseline_dashboard_24"/>
 
 </menu>
