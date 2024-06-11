@@ -1,28 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/ic_baseline_home_24"/>
-
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
     <item
         android:id="@+id/profile"
-        android:title="profile"
-        android:icon="@drawable/baseline_person_24"/>
-
+        android:icon="@drawable/baseline_person_24"
+        android:title="Profile"/>
     <item
         android:id="@+id/cart"
-        android:title="" />
-
+        android:title=""/>
     <item
         android:id="@+id/map"
-        android:title="maps"
-        android:icon="@drawable/baseline_map_24"/>
-
+        android:icon="@drawable/baseline_map_24"
+        android:title="Map"/>
     <item
         android:id="@+id/settings"
-        android:title="dashboard"
-        android:icon="@drawable/baseline_dashboard_24"/>
-
+        android:icon="@drawable/baseline_dashboard_24"
+        android:title="Settings"/>
 </menu>

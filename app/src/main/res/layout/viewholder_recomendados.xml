@@ -5,45 +5,44 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@color/red"
-    android:elevation="3dp"
-    app:cardCornerRadius="16dp">
+    android:background="@drawable/white_recommeded_btn"
+    android:elevation="3dp">
 
     <TextView
-    android:id="@+id/precio"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="$0.0"
-    android:textColor="#373B54"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="@+id/addBtn"
-    app:layout_constraintEnd_toStartOf="@+id/addBtn"
-    app:layout_constraintStart_toStartOf="@+id/image"
-    app:layout_constraintTop_toTopOf="@+id/addBtn" />
+        android:id="@+id/RecomePrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0.0"
+        android:textColor="#373B54"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/addBtn"
+        app:layout_constraintEnd_toStartOf="@+id/addBtn"
+        app:layout_constraintStart_toStartOf="@+id/Recomeimg"
+        app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:id="@+id/Recomeimg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_5" />
+        app:srcCompat="@drawable/rec_1" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/Rectitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="#373B54"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/image"
-        app:layout_constraintStart_toStartOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        app:layout_constraintEnd_toEndOf="@+id/Recomeimg"
+        app:layout_constraintStart_toStartOf="@+id/Recomeimg"
+        app:layout_constraintTop_toBottomOf="@+id/Recomeimg" />
 
     <ImageView
         android:id="@+id/addBtn"
@@ -52,7 +51,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="@+id/Recomeimg"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:srcCompat="@drawable/plus_circle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
