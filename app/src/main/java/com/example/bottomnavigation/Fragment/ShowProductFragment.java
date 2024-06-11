@@ -1,66 +1,99 @@
 package com.example.bottomnavigation.Fragment;
 
+import android.app.Fragment;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.Helper.ManagementCart;
 import com.example.bottomnavigation.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShowProductFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ShowProductFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ShowProductFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShowProductFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShowProductFragment newInstance(String param1, String param2) {
-        ShowProductFragment fragment = new ShowProductFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private TextView addToCartBtn;
+    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT, starTxT, caloryTxT, timeTxT;
+    private ImageView plusBtn, minusBtn, picFood;
+    private FoodDomain object;
+    private int numberOrder = 1;
+    private ManagementCart managementCart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        managementCart = new ManagementCart(this);
+
+        initView();
+        getBundle();
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_show_product, container, false);
+    }
+
+    private void getBundle() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object", foodDomainObject);
+        ShowProductFragment fragment = new ShowProductFragment();
+        fragment.setArguments(bundle);
+
+        int drawableResourceId = this.getResources().getIdentifier(object.getPic(), "drawable", this.getPackageName());
+        Glide.with(this)
+                .load(drawableResourceId)
+                .into(picFood);
+
+        TitleTxT.setText(object.getTitle());
+        feeTxT.setText("$" + object.getFee());
+        descripcionTxT.setText(object.getDescripcion());
+        numberOrderTxT.setText(String.valueOf(numberOrder));
+        caloryTxT.setText(object.getCalories()+"calorias");
+        starTxT.setText(object.getStar() + "");
+        timeTxT.setText(object.getTime()+"minutos");
+        totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+
+        plusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numberOrder = numberOrder + 1;
+                numberOrderTxT.setText(String.valueOf(numberOrder));
+                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+            }
+        });
+        minusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (numberOrder > 1) {
+                    numberOrder = numberOrder - 1;
+                }
+                numberOrderTxT.setText(String.valueOf(numberOrder));
+                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+            }
+        });
+
+        addToCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                object.setNumberInCart(numberOrder);
+                managementCart.insertFood(object);
+            }
+        });
+    }
+
+    private void initView() {
+        addToCartBtn = findViewById(R.id.addToCartBtn);
+        TitleTxT = findViewById(R.id.titleTxT);
+        feeTxT = findViewById(R.id.priceTxT);
+        descripcionTxT = findViewById(R.id.descriptionTxT);
+        numberOrderTxT = findViewById(R.id.numberItemTxT);
+        plusBtn = findViewById(R.id.plusCardBtn);
+        minusBtn = findViewById(R.id.minusCardBtn);
+        picFood = findViewById(R.id.foodPic);
+        totalPriceTxT = findViewById(R.id.totalPriceTxT);
+        starTxT = findViewById(R.id.starTxT);
+        caloryTxT = findViewById(R.id.VicaloriesTxt);
+        timeTxT = findViewById(R.id.timeTxT);
     }
 }

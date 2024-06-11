@@ -1,18 +1,15 @@
 package com.example.bottomnavigation.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.example.bottomnavigation.Adapter.CartListAdapter;
 import com.example.bottomnavigation.Helper.ManagementCart;
@@ -25,7 +22,7 @@ public class CartFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewList;
     private ManagementCart managementCart;
-    private TextView totalFeeTxt,TaxTxT,delivaryTxt,totalTxT, vacioTxT;
+    private TextView totaltarifaCart,TaxTxT,delivaryTxt,totalTxT, vacioTxT;
     private double tax;
     private ScrollView scrollView;
     @Override
@@ -67,17 +64,17 @@ public class CartFragment extends Fragment {
         double total = Math.round((managementCart.getTotalFee() + tax + delivery) * 100.0)/100.0;
         double itemTotal = Math.round(managementCart.getTotalFee() * 100.0) / 100.0;
 
-        totalFeeTxt.setText("$"+itemTotal);
+        totaltarifaCart.setText("$"+itemTotal);
         TaxTxT.setText("$"+tax);
         delivaryTxt.setText("$"+delivery);
         totalTxT.setText("$"+total);
     }
 
     private void initView() {
-        totalFeeTxt = totalFeeTxt.findViewById(R.id.totalFeeTxt);
+        totaltarifaCart = totaltarifaCart.findViewById(R.id.totaltarifaCart);
         TaxTxT = TaxTxT.findViewById(R.id.TaxTxT);
         delivaryTxt = delivaryTxt.findViewById(R.id.delivaryTxt);
-        totalTxT = totalTxT.findViewById(R.id.totalTxT);
+        totalTxT = totalTxT.findViewById(R.id.totalCart);
         recyclerViewList = recyclerViewList.findViewById(R.id.view);
         scrollView = scrollView.findViewById(R.id.scrollView);
         vacioTxT = vacioTxT.findViewById(R.id.vacioCart);

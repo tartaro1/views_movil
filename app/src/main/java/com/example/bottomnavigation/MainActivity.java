@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.example.bottomnavigation.Fragment.CartFragment;
 import com.example.bottomnavigation.Fragment.DashFragment;
 import com.example.bottomnavigation.Fragment.HomeFragment;
 import com.example.bottomnavigation.Fragment.MapsFragment;
@@ -34,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment());
                     break;
 
-                case R.id.pefil:
+                case R.id.profile:
                     replaceFragment(new ProfileFragment());
+                    break;
+
+                case R.id.cart:
+                    replaceFragment(new CartFragment());
                     break;
 
                 case R.id.map:
@@ -49,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
 
+        });
+
+        binding.floatingActionButton.setOnClickListener(v -> {
+            replaceFragment(new CartFragment());
+            binding.bottomNavigationView.setSelectedItemId(R.id.cart);
         });
 
     }
