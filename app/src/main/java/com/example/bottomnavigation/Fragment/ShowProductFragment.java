@@ -1,12 +1,13 @@
 package com.example.bottomnavigation.Fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.bottomnavigation.Domain.FoodDomain;
@@ -23,77 +24,52 @@ public class ShowProductFragment extends Fragment {
     private ManagementCart managementCart;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        managementCart = new ManagementCart(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_show_product, container, false);
 
-        initView();
+        managementCart = new ManagementCart(requireContext());
+
+        initView(view);
         getBundle();
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_show_product, container, false);
+        return view;
     }
 
     private void getBundle() {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object", foodDomainObject);
-        ShowProductFragment fragment = new ShowProductFragment();
-        fragment.setArguments(bundle);
+        if (getArguments() != null) {
+            object = (FoodDomain) getArguments().getSerializable("object");
 
-        int drawableResourceId = this.getResources().getIdentifier(object.getPic(), "drawable", this.getPackageName());
-        Glide.with(this)
-                .load(drawableResourceId)
-                .into(picFood);
+            int drawableResourceId = requireContext().getResources().getIdentifier(object.getPic(), "drawable", requireContext().getPackageName());
+            Glide.with(this)
+                    .load(drawableResourceId)
+                    .into(picFood);
 
-        TitleTxT.setText(object.getTitle());
-        feeTxT.setText("$" + object.getFee());
-        descripcionTxT.setText(object.getDescripcion());
-        numberOrderTxT.setText(String.valueOf(numberOrder));
-        caloryTxT.setText(object.getCalories()+"calorias");
-        starTxT.setText(object.getStar() + "");
-        timeTxT.setText(object.getTime()+"minutos");
-        totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+            TitleTxT.setText(object.getTitle());
+            feeTxT.setText("$" + object.getFee());
+            descripcionTxT.setText(object.getDescripcion());
+            numberOrderTxT.setText(String.valueOf(numberOrder));
+            caloryTxT.setText(object.getCalories()+"calorias");
+            starTxT.setText(object.getStar() + "");
+            timeTxT.setText(object.getTime()+"minutos");
+            totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+        }
 
-        plusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberOrder = numberOrder + 1;
-                numberOrderTxT.setText(String.valueOf(numberOrder));
-                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
-            }
-        });
-        minusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (numberOrder > 1) {
-                    numberOrder = numberOrder - 1;
-                }
-                numberOrderTxT.setText(String.valueOf(numberOrder));
-                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
-            }
-        });
-
-        addToCartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                object.setNumberInCart(numberOrder);
-                managementCart.insertFood(object);
-            }
-        });
+        // Configurar los OnClickListeners para los botones
+        // ...
     }
 
-    private void initView() {
-        addToCartBtn = findViewById(R.id.addToCartBtn);
-        TitleTxT = findViewById(R.id.titleTxT);
-        feeTxT = findViewById(R.id.priceTxT);
-        descripcionTxT = findViewById(R.id.descriptionTxT);
-        numberOrderTxT = findViewById(R.id.numberItemTxT);
-        plusBtn = findViewById(R.id.plusCardBtn);
-        minusBtn = findViewById(R.id.minusCardBtn);
-        picFood = findViewById(R.id.foodPic);
-        totalPriceTxT = findViewById(R.id.totalPriceTxT);
-        starTxT = findViewById(R.id.starTxT);
-        caloryTxT = findViewById(R.id.VicaloriesTxt);
-        timeTxT = findViewById(R.id.timeTxT);
+    private void initView(View view) {
+        addToCartBtn = view.findViewById(R.id.addToCartBtn);
+        TitleTxT = view.findViewById(R.id.titleTxT);
+        feeTxT = view.findViewById(R.id.priceTxT);
+        descripcionTxT = view.findViewById(R.id.descriptionTxT);
+        numberOrderTxT = view.findViewById(R.id.numberItemTxT);
+        plusBtn = view.findViewById(R.id.plusCardBtn);
+        minusBtn = view.findViewById(R.id.minusCardBtn);
+        picFood = view.findViewById(R.id.foodPic);
+        totalPriceTxT = view.findViewById(R.id.totalPriceTxT);
+        starTxT = view.findViewById(R.id.starTxT);
+        caloryTxT = view.findViewById(R.id.VicaloriesTxt);
+        timeTxT = view.findViewById(R.id.timeTxT);
     }
 }

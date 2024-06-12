@@ -1,6 +1,6 @@
 package com.example.bottomnavigation.Adapter;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.bottomnavigation.Fragment.ShowProductFragment;
 import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.Fragment.ShowProductFragment;
 import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
@@ -47,9 +50,22 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                 into(holder.pic);
 
         holder.addBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ShowProductFragment.class);
-            intent.putExtra("object", RecommendedDomains.get(position));
-            holder.itemView.getContext().startActivity(intent);
+            FoodDomain foodDomain = RecommendedDomains.get(position);
+
+            // 1. Crear una instancia del nuevo fragmento
+            ShowProductFragment fragment = new ShowProductFragment();
+
+            // 2. Agregar los argumentos necesarios al nuevo fragmento
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("object", foodDomain);
+            fragment.setArguments(bundle);
+
+            // 3. Realizar una transacción de fragmento para agregar el nuevo fragmento al contenedor de fragmentos
+            FragmentManager fragmentManager = ((FragmentActivity) holder.itemView.getContext()).getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
     }
 

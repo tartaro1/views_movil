@@ -11,41 +11,41 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.bottomnavigation.Domain.CategoryDomain;
+import com.example.bottomnavigation.Domain.DescubreDomain;
 import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class DescubreAdapter extends RecyclerView.Adapter<DescubreAdapter.ViewHolder> {
 
-    ArrayList<CategoryDomain> categoryDomains;
+    ArrayList<DescubreDomain> descubreDomain;
 
-    public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains){
-        this.categoryDomains = categoryDomains;
+    public DescubreAdapter(ArrayList<DescubreDomain> descubreDomain){
+        this.descubreDomain = descubreDomain;
     }
     @NonNull
     @Override
     public  ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_categoria,parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_descubre,parent, false);
 
         return new ViewHolder(inflate);
     }
 
     @Override
     public  void  onBindViewHolder(@NonNull ViewHolder holder, int position){
-        holder.categoryName.setText(categoryDomains.get(position).getTitle());
+        holder.descubreName.setText(descubreDomain.get(position).getDataTitle());
         String picUrl="";
         switch (position) {
             case 0: {
-                picUrl = "cat_1";
+                picUrl = "img_3";
                 break;
             }
             case 1: {
-                picUrl = "cat_2";
+                picUrl = "img_4";
                 break;
             }
             case 2: {
-                picUrl = "cat_3";
+                picUrl = "img_5";
                 break;
             }
             case 3: {
@@ -56,32 +56,28 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 picUrl = "cat_5";
                 break;
             }
-            case 5: {
-                picUrl = "cat_6";
-                break;
-            }
         }
 
         int drawableReourceId=holder.itemView.getContext().getResources()
                 .getIdentifier(picUrl,"drawable",
                         holder.itemView.getContext().getPackageName());
-        Glide.with(holder.itemView.getContext()).load(drawableReourceId).into(holder.categoryImg);
+        Glide.with(holder.itemView.getContext()).load(drawableReourceId).into(holder.descubreImg);
 
     }
 
     @Override
-    public int getItemCount() { return categoryDomains.size();}
+    public int getItemCount() { return descubreDomain.size();}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView categoryName;
-        ImageView categoryImg;
+        TextView descubreName;
+        ImageView descubreImg;
         ConstraintLayout mainLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryName = itemView.findViewById(R.id.categoryName);
-            categoryImg = itemView.findViewById(R.id.categoryImg);
-            mainLayout = itemView.findViewById(R.id.mainLayout);
+            descubreName = itemView.findViewById(R.id.DesTitle);
+            descubreImg = itemView.findViewById(R.id.DesImg);
+            mainLayout = itemView.findViewById(R.id.mainLayout1);
         }
     }
 }

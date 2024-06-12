@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -9,7 +10,7 @@
     android:elevation="3dp">
 
     <TextView
-        android:id="@+id/RecomePrecio"
+        android:id="@+id/DesPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$0.0"
@@ -18,12 +19,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/addBtn"
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
-        app:layout_constraintStart_toStartOf="@+id/Recomeimg"
+        app:layout_constraintStart_toStartOf="@+id/DesImg"
         app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
     <ImageView
-        android:id="@+id/Recomeimg"
-        android:layout_width="140dp"
+        android:id="@+id/DesImg"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -31,18 +32,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rec_1" />
+        app:srcCompat="@drawable/img_3" />
 
     <TextView
-        android:id="@+id/Rectitle"
+        android:id="@+id/DesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="#373B54"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/Recomeimg"
-        app:layout_constraintStart_toStartOf="@+id/Recomeimg"
-        app:layout_constraintTop_toBottomOf="@+id/Recomeimg" />
+        app:layout_constraintEnd_toEndOf="@+id/DesImg"
+        app:layout_constraintStart_toStartOf="@+id/DesImg"
+        app:layout_constraintTop_toBottomOf="@+id/DesImg" />
 
     <ImageView
         android:id="@+id/addBtn"
@@ -51,8 +52,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Recomeimg"
-        app:layout_constraintTop_toBottomOf="@+id/Rectitle"
+        app:layout_constraintEnd_toEndOf="@+id/DesImg"
+        app:layout_constraintTop_toBottomOf="@+id/DesTitle"
         app:srcCompat="@drawable/plus_circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

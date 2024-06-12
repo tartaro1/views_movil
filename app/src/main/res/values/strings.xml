@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_latitud">Latitud</string>
     <string name="hint_longitud">Longitud</string>
+    <string name="des_detail">paquete de detodito</string>
+    <string name="des_detail2">paquete de verde</string>
+    <string name="des_detail3">paquete de todo rico</string>
 </resources>

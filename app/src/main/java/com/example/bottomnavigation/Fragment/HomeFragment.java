@@ -1,30 +1,54 @@
 package com.example.bottomnavigation.Fragment;
 
-import android.os.Bundle; import androidx.annotation.NonNull; import androidx.appcompat.app.AppCompatActivity; import androidx.appcompat.widget.Toolbar; import androidx.fragment.app.Fragment; import androidx.recyclerview.widget.LinearLayoutManager; import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-import android.view.LayoutInflater; import android.view.Menu; import android.view.MenuInflater; import android.view.MenuItem; import android.view.View; import android.view.ViewGroup; import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.denzcoskun.imageslider.ImageSlider; import com.denzcoskun.imageslider.constants.ScaleTypes; import com.denzcoskun.imageslider.models.SlideModel; import com.example.bottomnavigation.Adapter.CategoryAdapter; import com.example.bottomnavigation.Adapter.RecommendedAdapter; import com.example.bottomnavigation.Domain.CategoryDomain; import com.example.bottomnavigation.Domain.FoodDomain; import com.example.bottomnavigation.R;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.bottomnavigation.Adapter.CategoryAdapter;
+import com.example.bottomnavigation.Adapter.DescubreAdapter;
+import com.example.bottomnavigation.Adapter.RecommendedAdapter;
+import com.example.bottomnavigation.Domain.CategoryDomain;
+import com.example.bottomnavigation.Domain.DescubreDomain;
+import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.R;
 
-import java.util.ArrayList; import java.util.Objects;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     private ImageSlider imageSlider;
-    private RecyclerView.Adapter adapter, adapter2;
-    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList;
+    private RecyclerView.Adapter adapter, adapter2, adapter3;
+    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList, recyclerViewDescubreList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+
         imageSlider = view.findViewById(R.id.imageSlider);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
         setupImageSlider();
         recyclerViewCategory(view);
         recyclerViewPopular(view);
+        recyclerViewDescubre(view);
 
         return view;
     }
@@ -40,7 +64,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar_menu, menu);
-        super.onCreateOptionsMenu(menu, Objects.requireNonNull(inflater));
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -48,13 +72,14 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.pefil) {
             Toast.makeText(requireContext(), "mi cuenta", Toast.LENGTH_SHORT).show();
+            return true;
         }
         if (id == R.id.cerrar) {
             Toast.makeText(requireContext(), "session cerrada", Toast.LENGTH_SHORT).show();
+            return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
-
     private void recyclerViewPopular(View view) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewPopularList = view.findViewById(R.id.recyclerViewRec);
@@ -82,10 +107,25 @@ public class HomeFragment extends Fragment {
         categorylist.add(new CategoryDomain("Enlatados", "cat_4"));
         categorylist.add(new CategoryDomain("Panes", "cat_5"));
         categorylist.add(new CategoryDomain("Bebidas", "cat_6"));
-        categorylist.add(new CategoryDomain("Frutas ", "cat_1"));
 
         adapter = new CategoryAdapter(categorylist);
         recyclerViewCategotyList.setAdapter(adapter);
     }
+
+    private void recyclerViewDescubre(View view) {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewDescubreList = view.findViewById(R.id.recyclerViewDescubre);
+        recyclerViewDescubreList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<DescubreDomain> DescubreList = new ArrayList<>();
+        DescubreList.add(new DescubreDomain("Detodito", R.drawable.img_3, R.string.des_detail, "0"));
+        DescubreList.add(new DescubreDomain("Detodito verde", R.drawable.img_4, R.string.des_detail2,"" ));
+        DescubreList.add(new DescubreDomain("Todo Rico", R.drawable.img_5, R.string.des_detail3, "11.0"));
+        //DescubreList.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+
+        adapter3 = new DescubreAdapter(DescubreList);
+        recyclerViewDescubreList.setAdapter(adapter3);
+    }
+
 }
 

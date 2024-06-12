@@ -6,30 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.HomeFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/orange"
-        app:logo="@drawable/img_1"
-        app:title="Tartaro"
-        app:titleMarginStart="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="top">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                app:logo="@drawable/img_1"
+                app:title="Tartaro"
+                app:titleMarginStart="30dp" />
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/carviewslider"
+                android:id="@+id/carViewSlider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 app:cardBackgroundColor="@color/orange"
@@ -52,12 +54,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Categories"
+                android:layout_marginLeft="20dp"
+                android:text="Categorias"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carviewslider"
-                app:layout_constraintTop_toBottomOf="@+id/carviewslider"/>
+                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
+                app:layout_constraintTop_toBottomOf="@+id/carViewSlider"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCat"
@@ -72,11 +75,12 @@
                 android:id="@+id/titleRec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="Recomendados"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carviewslider"
+                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -87,6 +91,27 @@
                 android:paddingStart="22dp"
                 android:paddingEnd="22dp"
                 android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/titleDescubre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Descubre productos"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDescubre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:layout_marginBottom="60dp" />
 
         </LinearLayout>
 
