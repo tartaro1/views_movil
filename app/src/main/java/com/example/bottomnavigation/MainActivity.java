@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.floatingActionButton.setOnClickListener(v -> {
             replaceFragment(new CartFragment());
-            binding.bottomNavigationView.setSelectedItemId(R.id.cart);
         });
 
     }

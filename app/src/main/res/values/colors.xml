@@ -11,7 +11,9 @@
     <color name="lavender">#8692f7</color>
     <color name="orange">#FF5722</color>
     <color name="red">#F02E00</color>
-    <color name="grey">#ff424242</color>
+    <color name="grey">#aaa</color>
     <color name="yellow">#fea900</color>
+    <color name="drakGrey">#ff424242</color>
+    <color name="dark">#02060D</color>
 
 </resources>

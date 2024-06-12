@@ -56,13 +56,14 @@ public class HomeFragment extends Fragment {
     private void setupImageSlider() {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.banner, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.banner, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.banner, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_9, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_10, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
         inflater.inflate(R.menu.toolbar_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -72,6 +73,7 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.pefil) {
             Toast.makeText(requireContext(), "mi cuenta", Toast.LENGTH_SHORT).show();
+
             return true;
         }
         if (id == R.id.cerrar) {

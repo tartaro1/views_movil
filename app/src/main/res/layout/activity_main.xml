@@ -20,6 +20,7 @@
         android:id="@+id/bottomAppBar"
         android:layout_gravity="bottom"
         android:background="@color/white"
+        style=""
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="50dp">
 

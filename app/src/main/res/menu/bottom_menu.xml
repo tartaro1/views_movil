@@ -17,5 +17,5 @@
     <item
         android:id="@+id/settings"
         android:icon="@drawable/baseline_dashboard_24"
-        android:title="Settings"/>
+        android:title="Dashboard"/>
 </menu>
