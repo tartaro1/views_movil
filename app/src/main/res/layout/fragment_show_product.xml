@@ -22,7 +22,7 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/foodPic"
+                android:id="@+id/ImgProduct"
                 android:layout_width="match_parent"
                 android:layout_height="325dp"
                 android:layout_margin="24dp"
@@ -35,7 +35,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/titleTxT"
+                    android:id="@+id/titleProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="title"
@@ -61,10 +61,10 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/titleTxT" >
+                        app:layout_constraintTop_toBottomOf="@+id/titleProduct" >
 
                         <ImageView
-                            android:id="@+id/plusCardBtn"
+                            android:id="@+id/plusProductBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -76,7 +76,7 @@
                             app:srcCompat="@drawable/plus" />
 
                         <ImageView
-                            android:id="@+id/minusCardBtn"
+                            android:id="@+id/minusProductBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -107,7 +107,7 @@
                                 app:srcCompat="@drawable/white_circle" />
 
                             <TextView
-                                android:id="@+id/numberItemTxT"
+                                android:id="@+id/numberItemProduct"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1"
@@ -123,7 +123,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/priceTxT"
+                        android:id="@+id/priceProduct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$0"
@@ -158,7 +158,7 @@
                             app:srcCompat="@drawable/star" />
 
                         <TextView
-                            android:id="@+id/starTxT"
+                            android:id="@+id/starProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -185,7 +185,7 @@
                             app:srcCompat="@drawable/chronometer" />
 
                         <TextView
-                            android:id="@+id/timeTxT"
+                            android:id="@+id/timeProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -212,7 +212,7 @@
                             app:srcCompat="@drawable/flame" />
 
                         <TextView
-                            android:id="@+id/VicaloriesTxt"
+                            android:id="@+id/VicaloriesProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -229,7 +229,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/descriptionTxT"
+                    android:id="@+id/descriptionProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -263,7 +263,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/totalPriceTxT"
+                            android:id="@+id/totalPriceProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -277,7 +277,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/addToCartBtn"
+                        android:id="@+id/addToProductBtn"
                         android:layout_width="0dp"
                         android:layout_height="65dp"
                         android:layout_margin="8dp"

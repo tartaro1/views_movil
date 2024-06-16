@@ -30,15 +30,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         this.changerNumberitemListener = changerNumberitemListener;
     }
 
-    public CartListAdapter(ArrayList<FoodDomain> listCart) {
-    }
 
     @NonNull
     @Override
-    public  ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_categoria,parent, false);
-
-        return new ViewHolder(inflate);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_cart, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -75,18 +72,17 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
     // --Commented out by Inspection (4/06/24, 8:50 PM):public abstract void changerd();
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView title, precioUnidadItem;
+        ImageView imagen, plusItem, minusItem;
+        TextView totalEachItem, num;
 
-        TextView title,precioUnidadItem;
-        ImageView imagen,plusItem,minusItem;
-        TextView totalEachItem,num;
-
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.titleTxT);
-            imagen = itemView.findViewById(R.id.ImgItemCart);
-            precioUnidadItem = itemView.findViewById(R.id.PrecioUnidadItem);
-            totalEachItem = itemView.findViewById(R.id.totalUnidadCart);
+            title = itemView.findViewById(R.id.titleTxt); // Cambiar a titleTxt si ese es el ID en el diseño
+            imagen = itemView.findViewById(R.id.picCart); // Cambiar a picCart si ese es el ID en el diseño
+            precioUnidadItem = itemView.findViewById(R.id.feeEachTxt); // Cambiar a feeEachTxt si ese es el ID en el diseño
+            totalEachItem = itemView.findViewById(R.id.totalEachTxt); // Cambiar a totalEachTxt si ese es el ID en el diseño
             plusItem = itemView.findViewById(R.id.plusCardBtn);
             minusItem = itemView.findViewById(R.id.minusCardBtn);
             num = itemView.findViewById(R.id.numberItemTxT);

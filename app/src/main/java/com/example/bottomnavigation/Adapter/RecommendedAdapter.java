@@ -57,7 +57,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     @Override
     public int getItemCount() { return RecommendedDomains.size();}
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView title,fee;
         ImageView pic,addBtn;

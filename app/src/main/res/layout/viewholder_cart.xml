@@ -11,7 +11,7 @@
     android:background="@drawable/card_background">
 
     <TextView
-        android:id="@+id/totalUnidadCart"
+        android:id="@+id/totalEachTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$0"
@@ -19,11 +19,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/PrecioUnidadItem"
+        app:layout_constraintEnd_toEndOf="@+id/feeEachTxt"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />
 
     <TextView
-        android:id="@+id/PrecioUnidadItem"
+        android:id="@+id/feeEachTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -31,12 +31,12 @@
         android:textColor="#373b54"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/titleItemCart"
+        app:layout_constraintBottom_toBottomOf="@+id/titleTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleItemCart" />
+        app:layout_constraintTop_toTopOf="@+id/picCart" />
 
     <ImageView
-        android:id="@+id/ImgItemCart"
+        android:id="@+id/picCart"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="4dp"
@@ -46,7 +46,7 @@
         app:srcCompat="@drawable/rec_1" />
 
     <TextView
-        android:id="@+id/titleItemCart"
+        android:id="@+id/titleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -55,8 +55,8 @@
         android:textColor="#373b54"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ImgItemCart"
-        app:layout_constraintTop_toTopOf="@+id/ImgItemCart" />
+        app:layout_constraintStart_toEndOf="@+id/picCart"
+        app:layout_constraintTop_toTopOf="@+id/picCart" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/yellow_bar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/titleItemCart"
-        app:layout_constraintTop_toBottomOf="@+id/titleItemCart">
+        app:layout_constraintStart_toStartOf="@+id/titleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/titleTxt">
 
         <ImageView
             android:id="@+id/plusCardBtn"
