@@ -23,6 +23,7 @@
         android:id="@+id/search"
         app:iconifiedByDefault="false"
         app:queryHint="Buscar ubicación"
+        style="@style/SearchView"
         android:focusable="false"
         app:closeIcon="@drawable/baseline_clear_24"
         app:searchIcon="@drawable/markerg"

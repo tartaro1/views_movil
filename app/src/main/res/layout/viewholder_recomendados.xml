@@ -39,7 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="#373B54"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/Recomeimg"
         app:layout_constraintStart_toStartOf="@+id/Recomeimg"
