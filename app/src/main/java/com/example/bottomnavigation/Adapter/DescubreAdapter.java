@@ -15,10 +15,12 @@ import com.example.bottomnavigation.Domain.DescubreDomain;
 import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DescubreAdapter extends RecyclerView.Adapter<DescubreAdapter.ViewHolder> {
 
     ArrayList<DescubreDomain> descubreDomain;
+    private List<DescubreDomain> dataList;
 
     public DescubreAdapter(ArrayList<DescubreDomain> descubreDomain){
         this.descubreDomain = descubreDomain;
@@ -80,4 +82,12 @@ public class DescubreAdapter extends RecyclerView.Adapter<DescubreAdapter.ViewHo
             mainLayout = itemView.findViewById(R.id.mainLayout1);
         }
     }
+    public void setSearchList(List<DescubreDomain> dataSearchList) {
+        this.dataList = dataSearchList;
+        notifyDataSetChanged();
+    }
+//    public  MyAdapter(Context context, List<DescubreDomain> dataList) {
+//        this.context = context;
+//        this.dataList = dataList;
+//    }
 }

@@ -182,10 +182,10 @@
                 android:background="@drawable/yellow_btn_background">
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/successButtom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Salida"
+                    android:text="Finalizar"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold"

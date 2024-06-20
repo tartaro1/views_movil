@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomNavigation"
         tools:targetApi="31">
+        <activity
+            android:name=".Activity.CatalogoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DocumentacionActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.ShowDetailActivity"
             android:exported="false" />

@@ -1,5 +1,6 @@
 package com.example.bottomnavigation.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import com.example.bottomnavigation.Adapter.RecommendedAdapter;
 import com.example.bottomnavigation.Domain.CategoryDomain;
 import com.example.bottomnavigation.Domain.DescubreDomain;
 import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.LoginMainActivity;
 import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
@@ -74,6 +76,8 @@ public class HomeFragment extends Fragment {
         if (id == R.id.pefil) {
             Toast.makeText(requireContext(), "mi cuenta", Toast.LENGTH_SHORT).show();
 
+            Intent intent = new Intent(getActivity(), LoginMainActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.cerrar) {
