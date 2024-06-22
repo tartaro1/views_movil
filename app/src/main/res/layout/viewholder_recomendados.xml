@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$0.0"
-        android:textColor="#373B54"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/addBtn"
@@ -21,8 +20,9 @@
         app:layout_constraintStart_toStartOf="@+id/Recomeimg"
         app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/Recomeimg"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
         android:layout_width="140dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"

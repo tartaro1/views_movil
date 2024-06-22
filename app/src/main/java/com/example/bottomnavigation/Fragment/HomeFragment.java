@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 
     private ImageSlider imageSlider;
     private RecyclerView.Adapter adapter, adapter2, adapter3;
-    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList, recyclerViewDescubreList;
+    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList, recyclerViewDescubreList,recyclerViewCarnes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
         recyclerViewCategory(view);
         recyclerViewPopular(view);
         recyclerViewDescubre(view);
+        setRecyclerViewCarnes(view);
 
         return view;
     }
@@ -131,6 +132,21 @@ public class HomeFragment extends Fragment {
 
         adapter3 = new DescubreAdapter(DescubreList);
         recyclerViewDescubreList.setAdapter(adapter3);
+    }
+
+    private void setRecyclerViewCarnes(View view) {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewPopularList = view.findViewById(R.id.recyclerViewDescubre);
+        recyclerViewPopularList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<FoodDomain> carneslist = new ArrayList<>();
+        carneslist.add(new FoodDomain("churrasco", "carnes1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+        carneslist.add(new FoodDomain("Cheese Burger", "rec_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato", 15.0, 4, 18, 1500));
+        carneslist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 16, 800));
+        carneslist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+
+        adapter2 = new RecommendedAdapter(carneslist);
+        recyclerViewPopularList.setAdapter(adapter2);
     }
 
 }

@@ -35,15 +35,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/picCart" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/picCart"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rec_1" />
+        app:srcCompat="@drawable/rec_1"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"/>
 
     <TextView
         android:id="@+id/titleTxt"

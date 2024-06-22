@@ -112,6 +112,26 @@
                 android:paddingEnd="22dp"
                 android:layout_marginBottom="60dp" />
 
+            <TextView
+                android:id="@+id/titleCarnes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Carnes"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCarnes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:layout_marginBottom="60dp" />
+
         </LinearLayout>
 
     </ScrollView>

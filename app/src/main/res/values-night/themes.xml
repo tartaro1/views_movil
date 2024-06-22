@@ -15,10 +15,17 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
     <style name="ScreenBackground"><item name="android:background">@color/black</item></style>
     <style name="ToolbarBackground"><item name="android:background">@color/red</item></style>
-    <style name="CardViewBackground"><item name="android:background">@color/drakGrey</item></style>
-    <style name="SearchView"><item name="android:textColor">@color/black</item></style>
+    <style name="bkg_show"><item name="android:background">@drawable/black_bkg</item></style>
+    <style name="ConstraintLayout"><item name="android:background">@color/black</item></style>
+    <style name="LinearLayout1"><item name="android:background">@drawable/white_background</item></style>
     <style name="MenuBackground"><item name="android:background">@color/dark</item></style>
     <style name="MenuIcoBackground"><item name="android:backgroundTint">@color/orange</item></style>
 </resources>
