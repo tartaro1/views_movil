@@ -68,8 +68,6 @@ public class ShowProductFragment extends Fragment {
         minusBtn = view.findViewById(R.id.minusCardBtn);
         picFood = view.findViewById(R.id.foodPic);
         totalPriceTxT = view.findViewById(R.id.totalPriceTxT);
-        starTxT = view.findViewById(R.id.starTxT);
-        caloryTxT = view.findViewById(R.id.VicaloriesTxt);
-        timeTxT = view.findViewById(R.id.timeTxT);
+
     }
 }

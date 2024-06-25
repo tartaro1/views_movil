@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white2"
+    android:background="@color/white"
     tools:context=".Fragment.CartFragment">
 
     <ScrollView
@@ -63,7 +63,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Item Total:"
-                        android:textColor="#373b54"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -72,7 +71,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$0"
-                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -92,7 +90,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Servicios de entrega:"
-                        android:textColor="#373b54"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -101,7 +98,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$0"
-                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -121,7 +117,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Iva:"
-                        android:textColor="#373b54"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -130,7 +125,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$0"
-                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -144,7 +138,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
-                    android:background="#707070" />
+                    android:background="?attr/colorOnSecondary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -161,7 +155,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Total:"
-                        android:textColor="#373b54"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
@@ -170,7 +163,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$0"
-                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>

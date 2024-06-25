@@ -16,7 +16,7 @@ import com.example.bottomnavigation.R;
 public class ShowDetailActivity extends AppCompatActivity {
 
     private TextView addToCartBtn;
-    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT, starTxT, caloryTxT, timeTxT;
+    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT, RatingBar;
     private ImageView plusBtn, minusBtn, picFood;
     private FoodDomain object;
     private int numberOrder = 1;
@@ -45,9 +45,9 @@ public class ShowDetailActivity extends AppCompatActivity {
             feeTxT.setText("$" + object.getFee());
             descripcionTxT.setText(object.getDescripcion());
             numberOrderTxT.setText(String.valueOf(numberOrder));
-            caloryTxT.setText(object.getCalories()+"calorias");
-            starTxT.setText(object.getStar() + "");
-            timeTxT.setText(object.getTime()+"minutos");
+//            caloryTxT.setText(object.getCalories()+"calorias");
+//            RatingBar.setRating((float) object.getStar());
+//            timeTxT.setText(object.getTime()+"minutos");
             totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
 
         plusBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +88,8 @@ public class ShowDetailActivity extends AppCompatActivity {
         minusBtn = findViewById(R.id.minusCardBtn);
         picFood = findViewById(R.id.foodPic);
         totalPriceTxT = findViewById(R.id.totalPriceTxT);
-        starTxT = findViewById(R.id.starTxT);
-        caloryTxT = findViewById(R.id.VicaloriesTxt);
-        timeTxT = findViewById(R.id.timeTxT);
+//        RatingBar = findViewById(R.id.ratingBar);
+//        caloryTxT = findViewById(R.id.VicaloriesTxt);
+//        timeTxT = findViewById(R.id.timeTxT);
     }
 }

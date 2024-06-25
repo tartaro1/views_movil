@@ -34,8 +34,8 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private ImageSlider imageSlider;
-    private RecyclerView.Adapter adapter, adapter2, adapter3;
-    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList, recyclerViewDescubreList,recyclerViewCarnes;
+    private RecyclerView.Adapter adapter, adapter2, adapter3, adapter4;
+    private RecyclerView recyclerViewCategotyList, recyclerViewPopularList, recyclerViewDescubreList,recyclerViewCarnesList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         recyclerViewCategory(view);
         recyclerViewPopular(view);
         recyclerViewDescubre(view);
-        setRecyclerViewCarnes(view);
+        recyclerViewCarnes(view);
 
         return view;
     }
@@ -93,10 +93,10 @@ public class HomeFragment extends Fragment {
         recyclerViewPopularList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> foodlist = new ArrayList<>();
-        foodlist.add(new FoodDomain("Pepperoni pizza", "rec_1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
-        foodlist.add(new FoodDomain("Cheese Burger", "rec_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato", 15.0, 4, 18, 1500));
-        foodlist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 16, 800));
-        foodlist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+        foodlist.add(new FoodDomain("Pepperoni pizza", "rec_1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 2, 1000));
+        foodlist.add(new FoodDomain("Cheese Burger", "rec_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato", 15.0, 4, 5, 1500));
+        foodlist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 5, 800));
+        foodlist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 3, 1000));
 
         adapter2 = new RecommendedAdapter(foodlist);
         recyclerViewPopularList.setAdapter(adapter2);
@@ -134,10 +134,10 @@ public class HomeFragment extends Fragment {
         recyclerViewDescubreList.setAdapter(adapter3);
     }
 
-    private void setRecyclerViewCarnes(View view) {
+    private void recyclerViewCarnes(View view) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewPopularList = view.findViewById(R.id.recyclerViewDescubre);
-        recyclerViewPopularList.setLayoutManager(linearLayoutManager);
+        recyclerViewCarnesList = view.findViewById(R.id.recyclerViewCarnes);
+        recyclerViewCarnesList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> carneslist = new ArrayList<>();
         carneslist.add(new FoodDomain("churrasco", "carnes1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
@@ -145,8 +145,8 @@ public class HomeFragment extends Fragment {
         carneslist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 16, 800));
         carneslist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
 
-        adapter2 = new RecommendedAdapter(carneslist);
-        recyclerViewPopularList.setAdapter(adapter2);
+        adapter4 = new RecommendedAdapter(carneslist);
+        recyclerViewCarnesList.setAdapter(adapter4);
     }
 
 }
