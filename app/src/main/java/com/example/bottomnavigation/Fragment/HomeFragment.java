@@ -21,10 +21,8 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.bottomnavigation.Adapter.CategoryAdapter;
-import com.example.bottomnavigation.Adapter.DescubreAdapter;
 import com.example.bottomnavigation.Adapter.RecommendedAdapter;
 import com.example.bottomnavigation.Domain.CategoryDomain;
-import com.example.bottomnavigation.Domain.DescubreDomain;
 import com.example.bottomnavigation.Domain.FoodDomain;
 import com.example.bottomnavigation.LoginMainActivity;
 import com.example.bottomnavigation.R;
@@ -93,10 +91,11 @@ public class HomeFragment extends Fragment {
         recyclerViewPopularList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> foodlist = new ArrayList<>();
-        foodlist.add(new FoodDomain("Pepperoni pizza", "rec_1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 2, 1000));
-        foodlist.add(new FoodDomain("Cheese Burger", "rec_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato", 15.0, 4, 5, 1500));
-        foodlist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 5, 800));
-        foodlist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 3, 1000));
+        foodlist.add(new FoodDomain("Carnes Madurados", "rec_5", R.string.descripcionRec1, 13.000, R.string.esprecificacionRec1, 3.5, 1000));
+        foodlist.add(new FoodDomain("Carne de Diablo Zenú", "rec_6", R.string.descripcionRec2, 15.000, R.string.esprecificacionRec2, 5, 1500));
+        foodlist.add(new FoodDomain("Salsa Fruco de tomate ", "rec_7", R.string.descripcionRec3, 11.000, R.string.esprecificacionRec3, 4.5, 800));
+        foodlist.add(new FoodDomain("Café Nescafé Dolca", "rec_8", R.string.descripcionRec4, 13.0, R.string.esprecificacionRec4, 3, 1000));
+        foodlist.add(new FoodDomain("Yogurt Finesse", "rec_9", R.string.descripcionRec5, 11.000, R.string.esprecificacionRec5, 4.5, 800));
 
         adapter2 = new RecommendedAdapter(foodlist);
         recyclerViewPopularList.setAdapter(adapter2);
@@ -124,13 +123,12 @@ public class HomeFragment extends Fragment {
         recyclerViewDescubreList = view.findViewById(R.id.recyclerViewDescubre);
         recyclerViewDescubreList.setLayoutManager(linearLayoutManager);
 
-        ArrayList<DescubreDomain> DescubreList = new ArrayList<>();
-        DescubreList.add(new DescubreDomain("Detodito", R.drawable.img_3, R.string.des_detail, "0"));
-        DescubreList.add(new DescubreDomain("Detodito verde", R.drawable.img_4, R.string.des_detail2,"" ));
-        DescubreList.add(new DescubreDomain("Todo Rico", R.drawable.img_5, R.string.des_detail3, "11.0"));
-        //DescubreList.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+        ArrayList<FoodDomain> DescubreList = new ArrayList<>();
+        DescubreList.add(new FoodDomain("Sal REFISAL Refinada", "des_1", R.string.descripcionDes1, 11.000, R.string.esprecificacionDes1, 2.5, 800));
+        DescubreList.add(new FoodDomain("Plátano llanero", "des_2", R.string.descripcionDes2, 2.000, R.string.esprecificacionDes2, 3, 800));
+        DescubreList.add(new FoodDomain("Pan bimbo blanco \nactidefens tajado", "des_3", R.string.descripcionDes3, 7.000, R.string.esprecificacionRec5, 3.5, 800));
 
-        adapter3 = new DescubreAdapter(DescubreList);
+        adapter3 = new RecommendedAdapter(DescubreList);
         recyclerViewDescubreList.setAdapter(adapter3);
     }
 
@@ -140,10 +138,10 @@ public class HomeFragment extends Fragment {
         recyclerViewCarnesList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> carneslist = new ArrayList<>();
-        carneslist.add(new FoodDomain("churrasco", "carnes1", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
-        carneslist.add(new FoodDomain("Cheese Burger", "rec_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato", 15.0, 4, 18, 1500));
-        carneslist.add(new FoodDomain("Vegetable pizza", "rec_3", "olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 11.0, 3, 16, 800));
-        carneslist.add(new FoodDomain("Fressas", "rec_4", "slices, mozzarella cheese, fresh oregano, ground black pepper, pizza sauce", 13.0, 5, 20, 1000));
+        carneslist.add(new FoodDomain("churrasco", "carnes1", R.string.descripcionRec1, 13.0, R.string.esprecificacionCarne1, 20, 1000));
+        carneslist.add(new FoodDomain("Chuck Eye Roll \nEntrecot Americano", "carnes2", R.string.descripcionRec1, 15.0, R.string.esprecificacionCarne1, 18, 1500));
+        carneslist.add(new FoodDomain("Costilla en bandeja", "carnes3", R.string.descripcionRec1, 11.0, R.string.esprecificacionCarne2, 16, 800));
+        carneslist.add(new FoodDomain("Fressas", "rec_4", R.string.descripcionRec1, 13.0, 5, 20, 1000));
 
         adapter4 = new RecommendedAdapter(carneslist);
         recyclerViewCarnesList.setAdapter(adapter4);

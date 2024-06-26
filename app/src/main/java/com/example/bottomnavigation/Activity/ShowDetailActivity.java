@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.RatingBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,8 @@ import com.example.bottomnavigation.R;
 public class ShowDetailActivity extends AppCompatActivity {
 
     private TextView addToCartBtn;
-    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT, RatingBar;
+    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT,timeTxT;
+    private RatingBar RatingBar;
     private ImageView plusBtn, minusBtn, picFood;
     private FoodDomain object;
     private int numberOrder = 1;
@@ -46,8 +48,8 @@ public class ShowDetailActivity extends AppCompatActivity {
             descripcionTxT.setText(object.getDescripcion());
             numberOrderTxT.setText(String.valueOf(numberOrder));
 //            caloryTxT.setText(object.getCalories()+"calorias");
-//            RatingBar.setRating((float) object.getStar());
-//            timeTxT.setText(object.getTime()+"minutos");
+            RatingBar.setRating((float) object.getStar());
+            timeTxT.setText(object.getTime());
             totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
 
         plusBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +90,8 @@ public class ShowDetailActivity extends AppCompatActivity {
         minusBtn = findViewById(R.id.minusCardBtn);
         picFood = findViewById(R.id.foodPic);
         totalPriceTxT = findViewById(R.id.totalPriceTxT);
-//        RatingBar = findViewById(R.id.ratingBar);
+        RatingBar = findViewById(R.id.ratingBar);
 //        caloryTxT = findViewById(R.id.VicaloriesTxt);
-//        timeTxT = findViewById(R.id.timeTxT);
+        timeTxT = findViewById(R.id.detallesTxT);
     }
 }

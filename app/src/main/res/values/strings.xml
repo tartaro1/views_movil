@@ -8,4 +8,141 @@
     <string name="des_detail2">paquete de verde</string>
     <string name="des_detail3">paquete de todo rico</string>
     <string name="lomo_de_res">lomo res </string>
+    <string name="descripcionRec1">
+        <b>pais de origen:</b>
+        España\n
+        <b>Ingrendientes:</b>
+         chorizo español de cerdo, jamón serrano de cerdo y salami de cerdo.
+    </string>
+    <string name="descripcionRec2">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Ingrendientes:</b>
+         Carne de res, Carne de cerdo, Agua, Almidón de yuca, Sal, Pimienta, Polifosfato de sodio (regulador de acidez),
+        Aroma natural nuez moscada, Eritorbato de sodio (antioxidante), Nitrito de sodio (fijador de color), Gluten
+    </string>
+    <string name="descripcionRec3">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Ingrendientes:</b>
+         Agua, Concentrado de tomate, Azúcar, Vinagre de alcohol, Sal, Cloruro de potasio, Especias, Conservante ácido sórbico,
+        Conservante benzoato de sodio, Espesante carboximetilcelulosa de sodio
+    </string>
+    <string name="descripcionRec4">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Informacion:</b>
+         El tinto que tanto les gusta a los colombianos. •DOLCA® es un café soluble con el sabor
+        del tinto que tanto disfrutas, por un precio que te va a gustar aún más.
+    </string>
+    <string name="descripcionRec5">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Informacion:</b>
+        Yogurt Finesse es un yogurt descremado con trozos de fruta que contiene probióticos que ayudan
+        a mejorar la regeneración de la flora intestinal. Además, no tiene azúcar adicionado. Ideal para
+        complementar tu alimentación balanceada y el ejercicio físico. ¡No renuncies a lo que te gusta y disfrútalo ahora!
+    </string>
+    <string name="esprecificacionRec1">
+        <b>marca:</b>
+        monticelello\n
+        <b>contenido:</b>
+        6 Porciones
+    </string>
+    <string name="esprecificacionRec2">
+        <b>marca:</b>
+        Zenu\n
+        <b>contenido:</b>
+        80 G
+    </string>
+    <string name="esprecificacionRec3">
+        <b>marca:</b>
+        Fruco\n
+        <b>contenido:</b>
+        1000 G
+    </string>
+    <string name="esprecificacionRec4">
+        <b>marca:</b>
+        Nestle\n
+        <b>contenido:</b>
+        170 G
+    </string>
+    <string name="esprecificacionRec5">
+        <b>marca:</b>
+        Alpina\n
+        <b>contenido:</b>
+        1700 G
+    </string>
+    <string name="descripcionDes1">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Ingredientes:</b>
+        Cloruro de sodio, Fluoruro de potasio
+    </string>
+    <string name="descripcionDes2">
+        <b>pais de origen:</b>
+        Colombia\n
+        <b>Informacion:</b>
+        Disfruta con tu familia y amigos todas las deliciosas recetas, que puedes preparar con los
+        productos
+    </string>
+    <string name="descripcionDes3">
+        <b>pais de origen:</b>
+        Mexico\n
+        <b>Ingredientes:</b>
+        Harina de trigo fortificada, Niacina, Hierro, Vitamina b1, Vitamina b2, ácido fólico, Agua, Azúcar, Levadura,
+        Gluten de trigo, Mezcla de aceites vegetales comestibles, Mezcla de grasas vegetales comestibles,
+        Sal refinada yodada y fluorizada, Conservante propionato de calcio, Conservante ácido sórbico, Emulsificante
+        monoglicéridos y diglicéridos de ácidos grasos, Emulsificante ésteres diacetiltartáricos y de ácidos grasos
+        de glicerol, Acentuador de sabor cloruro de potasio, Regulador de la acidez (ácido cítrico), Sabor natural crema,
+        Extracto de levadura, Zinc, Agente de tratamiento de las harinas (ácido ascórbico), Gluten, Soya
+    </string>
+    <string name="esprecificacionDes1">
+        <b>marca:</b>
+        Refisal\n
+        <b>contenido:</b>
+        1 Kg
+    </string>
+    <string name="esprecificacionDes2">
+        <b>marca:</b>
+        Sin marca\n
+        <b>contenido:</b>
+        500 g
+    </string>
+    <string name="esprecificacionDes3">
+        <b>marca:</b>
+        Bimbo\n
+        <b>contenido:</b>
+        730 g
+    </string>
+
+    <string name="descripcionCarnes">
+        <b>pais de origen:</b>
+        Estados unidos\n
+        <b>Informacion:</b>
+        Los más frescos y deliciosos productos.
+    </string>
+
+    <string name="esprecificacionCarne1">
+        <b>marca:</b>
+        Jumbo\n
+        <b>contenido:</b>
+        500 gr
+    </string>
+
+    <string name="descripcionCarnes2">
+        <b>pais de origen:</b>
+        Estados unidos
+
+        <b>Informacion:</b>
+        Crea deliciosa recetas ideales para compartir agradables momentos con tu familia y amigos.
+    </string>
+
+    <string name="esprecificacionCarne2">
+        <b>marca:</b>
+        Jumbo\n
+        <b>contenido:</b>
+        500 gr
+    </string>
+
 </resources>

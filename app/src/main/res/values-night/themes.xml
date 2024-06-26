@@ -28,4 +28,8 @@
     <style name="LinearLayout1"><item name="android:background">@drawable/dark_background</item></style>
     <style name="MenuBackground"><item name="android:background">@color/dark</item></style>
     <style name="MenuIcoBackground"><item name="android:backgroundTint">@color/orange</item></style>
+    <style name="RatingBar.orange" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/orange</item>
+        <item name="colorControlActivated">@color/red</item>
+    </style>
 </resources>

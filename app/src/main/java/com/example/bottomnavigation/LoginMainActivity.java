@@ -1,6 +1,8 @@
 package com.example.bottomnavigation;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +16,8 @@ public class LoginMainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private VisorLoginAdapter Adapter;
+    private EditText etUsername,etUserEmail, etPassword;
+    private Button btnRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
