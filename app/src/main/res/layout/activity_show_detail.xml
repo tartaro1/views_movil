@@ -164,8 +164,7 @@
                     android:text="Especificaciones:"
                     android:textColor="@color/orange"
                     android:textStyle="bold"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="16dp"
                     android:textSize="18sp"/>
 
                 <TextView
@@ -195,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
-                            android:text="Totalprice"
+                            android:text="Precio Total"
                             android:textColor="#373b54"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -227,7 +226,7 @@
                         android:elevation="3dp"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:text="Add to Cart"
+                        android:text="Añadir al carrito"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />

@@ -4,19 +4,96 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.bottomnavigation.API.ApiService;
 import com.example.bottomnavigation.R;
+import com.example.bottomnavigation.API.RegisterRequest;
+import com.example.bottomnavigation.API.RegisterResponse;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegistroFragment extends Fragment {
 
+    private EditText etName, etEmail, etPassword, etConfirmPassword;
+    private Button btnRegister;
+    private ApiService apiService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registro, container, false);
+        View view = inflater.inflate(R.layout.fragment_registro, container, false);
+
+        etName = view.findViewById(R.id.signup_name);
+        etEmail = view.findViewById(R.id.signup_email);
+        etPassword = view.findViewById(R.id.signup_password);
+        etConfirmPassword = view.findViewById(R.id.signup_confirm);
+        btnRegister = view.findViewById(R.id.signup_button);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://tu-api-url.com/") // Reemplaza con la URL base de tu API
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        apiService = retrofit.create(ApiService.class);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
+
+        return view;
+    }
+
+    private void registerUser() {
+        String name = etName.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        String confirmPassword = etConfirmPassword.getText().toString().trim();
+
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(getContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(getContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        RegisterRequest registerRequest = new RegisterRequest(name, email, password);
+
+        Call<RegisterResponse> call = apiService.registerUser(registerRequest);
+        call.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    RegisterResponse registerResponse = response.body();
+                    if (registerResponse.isSuccess()) {
+                        Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        // Aquí puedes navegar a la siguiente actividad o cerrar este fragmento
+                    } else {
+                        Toast.makeText(getContext(), "Registro fallido: " + registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Error en el registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

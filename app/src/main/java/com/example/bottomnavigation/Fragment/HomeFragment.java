@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
 
     private void setupImageSlider() {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.banner, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img_11, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.img_9, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.img_10, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
@@ -91,11 +91,11 @@ public class HomeFragment extends Fragment {
         recyclerViewPopularList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> foodlist = new ArrayList<>();
-        foodlist.add(new FoodDomain("Carnes Madurados", "rec_5", R.string.descripcionRec1, 13.000, R.string.esprecificacionRec1, 3.5, 1000));
-        foodlist.add(new FoodDomain("Carne de Diablo Zenú", "rec_6", R.string.descripcionRec2, 15.000, R.string.esprecificacionRec2, 5, 1500));
-        foodlist.add(new FoodDomain("Salsa Fruco de tomate ", "rec_7", R.string.descripcionRec3, 11.000, R.string.esprecificacionRec3, 4.5, 800));
+        foodlist.add(new FoodDomain("Carnes Madurados", "rec_5", R.string.descripcionRec1, 13.0, R.string.esprecificacionRec1, 3.5, 1000));
+        foodlist.add(new FoodDomain("Carne de Diablo Zenú", "rec_6", R.string.descripcionRec2, 15.0, R.string.esprecificacionRec2, 5, 1500));
+        foodlist.add(new FoodDomain("Salsa Fruco de tomate ", "rec_7", R.string.descripcionRec3, 11.0, R.string.esprecificacionRec3, 4.5, 800));
         foodlist.add(new FoodDomain("Café Nescafé Dolca", "rec_8", R.string.descripcionRec4, 13.0, R.string.esprecificacionRec4, 3, 1000));
-        foodlist.add(new FoodDomain("Yogurt Finesse", "rec_9", R.string.descripcionRec5, 11.000, R.string.esprecificacionRec5, 4.5, 800));
+        foodlist.add(new FoodDomain("Yogurt Finesse", "rec_9", R.string.descripcionRec5, 11.0, R.string.esprecificacionRec5, 4.5, 800));
 
         adapter2 = new RecommendedAdapter(foodlist);
         recyclerViewPopularList.setAdapter(adapter2);
@@ -124,8 +124,8 @@ public class HomeFragment extends Fragment {
         recyclerViewDescubreList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodDomain> DescubreList = new ArrayList<>();
-        DescubreList.add(new FoodDomain("Sal REFISAL Refinada", "des_1", R.string.descripcionDes1, 11.000, R.string.esprecificacionDes1, 2.5, 800));
-        DescubreList.add(new FoodDomain("Plátano llanero", "des_2", R.string.descripcionDes2, 2.000, R.string.esprecificacionDes2, 3, 800));
+        DescubreList.add(new FoodDomain("Sal REFISAL Refinada", "des_1", R.string.descripcionDes1, 11.0, R.string.esprecificacionDes1, 2.5, 800));
+        DescubreList.add(new FoodDomain("Plátano llanero", "des_2", R.string.descripcionDes2, 2.0, R.string.esprecificacionDes2, 3, 800));
         DescubreList.add(new FoodDomain("Pan bimbo blanco \nactidefens tajado", "des_3", R.string.descripcionDes3, 7.000, R.string.esprecificacionRec5, 3.5, 800));
 
         adapter3 = new RecommendedAdapter(DescubreList);

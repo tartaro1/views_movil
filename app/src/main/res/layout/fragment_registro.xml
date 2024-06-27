@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".Fragment.RegistroFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -31,6 +31,7 @@
                 android:padding="8dp"
                 android:hint="Nombre"
                 android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <EditText
@@ -40,8 +41,9 @@
                 android:id="@+id/signup_email"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Email"
+                android:hint="Correo"
                 android:drawableLeft="@drawable/baseline_email_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <EditText
@@ -51,9 +53,10 @@
                 android:id="@+id/signup_password"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="Contrseña"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <EditText
@@ -63,9 +66,10 @@
                 android:id="@+id/signup_confirm"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Confirm Password"
+                android:hint="Confirmar Contrseña"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_password_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <Button
@@ -73,11 +77,12 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/signup_button"
                 android:textSize="18sp"
-                android:text="Signup"
+                android:text="Registrarse"
                 app:cornerRadius = "30dp"/>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

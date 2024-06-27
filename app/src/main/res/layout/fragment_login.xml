@@ -29,8 +29,9 @@
                 android:id="@+id/login_email"
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
-                android:hint="Email"
+                android:hint="Correo"
                 android:drawableLeft="@drawable/baseline_email_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <EditText
@@ -40,9 +41,10 @@
                 android:id="@+id/login_password"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="Contraseña"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawableTint="?attr/colorPrimary"
                 android:drawablePadding="8dp"
                 android:background="@drawable/editext_login_bkg"/>
             <Button
@@ -52,7 +54,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/login_button"
                 android:textSize="18sp"
-                android:text="Login"
+                android:text="Iniciar Sesion"
                 app:cornerRadius = "30dp"/>
 
         </LinearLayout>

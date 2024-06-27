@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io'}
     }
 }
-rootProject.name = "Bottom Navigation"
+rootProject.name = "Proyecto Tartaro"
 include ':app'
