@@ -1,5 +1,7 @@
 package com.example.bottomnavigation.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,16 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.bottomnavigation.API.ApiService;
-import com.example.bottomnavigation.R;
 import com.example.bottomnavigation.API.RegisterRequest;
 import com.example.bottomnavigation.API.RegisterResponse;
+import com.example.bottomnavigation.R;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegistroFragment extends Fragment {
 
-    private EditText etName, etEmail, etPassword, etConfirmPassword;
+    private EditText etName,etPhone, etCedula, etLocation, etEmail, etPassword, etConfirmPassword;
     private Button btnRegister;
     private ApiService apiService;
 
@@ -33,14 +41,42 @@ public class RegistroFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_registro, container, false);
 
         etName = view.findViewById(R.id.signup_name);
+        etPhone = view.findViewById(R.id.signup_telefono);
+        etCedula = view.findViewById(R.id.signup_cedula);
+        etLocation = view.findViewById(R.id.signup_location);
         etEmail = view.findViewById(R.id.signup_email);
         etPassword = view.findViewById(R.id.signup_password);
         etConfirmPassword = view.findViewById(R.id.signup_confirm);
         btnRegister = view.findViewById(R.id.signup_button);
 
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        Interceptor authInterceptor = new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request originalRequest = chain.request();
+
+                // Obtén el token de donde lo tengas almacenado
+                String token = getTokenFromStorage();
+
+                Request newRequest = originalRequest.newBuilder()
+                        .header("x-access-token", token)
+                        .build();
+
+                return chain.proceed(newRequest);
+            }
+        };
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .build();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://tu-api-url.com/") // Reemplaza con la URL base de tu API
+                .baseUrl("https://ms-backend-tartaro.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build();
 
         apiService = retrofit.create(ApiService.class);
@@ -57,11 +93,14 @@ public class RegistroFragment extends Fragment {
 
     private void registerUser() {
         String name = etName.getText().toString().trim();
+        int cedula = Integer.parseInt(etCedula.getText().toString().trim());
+        String celular = etPhone.getText().toString().trim();
+        String direccion = etLocation.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
         String confirmPassword = etConfirmPassword.getText().toString().trim();
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (name.isEmpty() || cedula == 0 || celular.isEmpty() || direccion.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(getContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -71,9 +110,12 @@ public class RegistroFragment extends Fragment {
             return;
         }
 
-        RegisterRequest registerRequest = new RegisterRequest(name, email, password);
+        // Obtén el token de donde lo tengas almacenado
+        String token = getTokenFromStorage(); // Implementa este método según donde almacenes el token
 
-        Call<RegisterResponse> call = apiService.registerUser(registerRequest);
+        RegisterRequest registerRequest = new RegisterRequest(name,cedula, celular, direccion, email, password);
+
+        Call<RegisterResponse> call = apiService.registerUser(token, registerRequest);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
@@ -86,7 +128,11 @@ public class RegistroFragment extends Fragment {
                         Toast.makeText(getContext(), "Registro fallido: " + registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Error en el registro", Toast.LENGTH_SHORT).show();
+                    if (response.code() == 401) {
+                        Toast.makeText(getContext(), "Token no válido o expirado", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Error en el registro", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -95,5 +141,12 @@ public class RegistroFragment extends Fragment {
                 Toast.makeText(getContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private String getTokenFromStorage() {
+        // Implementa este método para obtener el token de donde lo tengas almacenado
+        // Por ejemplo, si lo tienes en SharedPreferences:
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        return prefs.getString("access_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb3JyZW8iOiJzdXBwb3J0QHRhcnRhcm8uY29tIiwiUm9sIjoyLCJpYXQiOjE3MTk1NDM0ODEsImV4cCI6MTcxOTU0NTg4MX0.2trl28AcxOViF3cbF2iyxQSCAZSq9f6aGLlP7eyurPA");
     }
 }
