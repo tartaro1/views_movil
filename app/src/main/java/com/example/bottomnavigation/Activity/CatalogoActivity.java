@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
-import com.example.bottomnavigation.Adapter.DescubreAdapter;
 import com.example.bottomnavigation.Domain.DescubreDomain;
 import com.example.bottomnavigation.R;
 
@@ -17,7 +16,6 @@ import java.util.List;
 public class CatalogoActivity extends AppCompatActivity {
 
     List<DescubreDomain> dataList;
-    DescubreAdapter adapter;
     DescubreDomain androidData;
     SearchView searchView;
     private View recyclerView;
@@ -69,7 +67,7 @@ public class CatalogoActivity extends AppCompatActivity {
         if (dataSearchList.isEmpty()){
             Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
         } else {
-            adapter.setSearchList(dataSearchList);
+
         }
     }
 }

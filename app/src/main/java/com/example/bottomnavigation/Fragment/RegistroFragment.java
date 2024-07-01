@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottomnavigation.API.ApiService;
 import com.example.bottomnavigation.API.RegisterRequest;
@@ -121,9 +123,15 @@ public class RegistroFragment extends Fragment {
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     RegisterResponse registerResponse = response.body();
-                    if (registerResponse.isSuccess()) {
+                    if (!registerResponse.isError() && registerResponse.getStatus() == 201) {
                         Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
                         // Aquí puedes navegar a la siguiente actividad o cerrar este fragmento
+                        Fragment perfilFragment = new ProfileFragment();
+                        FragmentManager fragmentManager = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.ProfileFragment, perfilFragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                     } else {
                         Toast.makeText(getContext(), "Registro fallido: " + registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -147,6 +155,6 @@ public class RegistroFragment extends Fragment {
         // Implementa este método para obtener el token de donde lo tengas almacenado
         // Por ejemplo, si lo tienes en SharedPreferences:
         SharedPreferences prefs = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        return prefs.getString("access_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb3JyZW8iOiJzdXBwb3J0QHRhcnRhcm8uY29tIiwiUm9sIjoyLCJpYXQiOjE3MTk1NDM0ODEsImV4cCI6MTcxOTU0NTg4MX0.2trl28AcxOViF3cbF2iyxQSCAZSq9f6aGLlP7eyurPA");
+        return prefs.getString("access_token", "");
     }
 }

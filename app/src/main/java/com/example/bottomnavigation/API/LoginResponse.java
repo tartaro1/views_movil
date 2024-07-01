@@ -4,6 +4,16 @@ public class LoginResponse {
     private boolean success;
     private String message;
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    private int role;
+
     public void setSuccess(boolean success) {
         this.success = success;
     }

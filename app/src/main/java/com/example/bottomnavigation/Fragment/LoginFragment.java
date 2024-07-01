@@ -1,5 +1,8 @@
 package com.example.bottomnavigation.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +12,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottomnavigation.API.ApiService;
 import com.example.bottomnavigation.API.LoginRequest;
 import com.example.bottomnavigation.API.LoginResponse;
+import com.example.bottomnavigation.Activity.DeliveryActivity;
 import com.example.bottomnavigation.R;
 
 import retrofit2.Call;
@@ -70,12 +76,18 @@ public class LoginFragment extends Fragment {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     LoginResponse loginResponse = response.body();
-                    if (loginResponse.isSuccess()) {
+                    String token = loginResponse.getToken();
+                    int role = loginResponse.getRole();
+
+                    if (token != null && !token.isEmpty()) {
+                        saveTokenToStorage(token);
+                        saveRoleToStorage(role);
                         Toast.makeText(getContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                        // Aquí puedes guardar el token de sesión si lo recibes
-                        // y navegar a la siguiente actividad
+
+                        // Navegar según el rol
+                        navigateBasedOnRole(role);
                     } else {
-                        Toast.makeText(getContext(), "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Token inválido", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "Error en el inicio de sesión", Toast.LENGTH_SHORT).show();
@@ -87,5 +99,35 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void navigateBasedOnRole(int role) {
+        if (role == 1) {  // Asumiendo que 1 es para usuarios normales
+            Fragment perfilFragment = new ProfileFragment();
+            FragmentManager fragmentManager = getParentFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.ProfileFragment, perfilFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        } else if (role == 2) {  // Asumiendo que 2 es para repartidores
+            Intent intent = new Intent(getActivity(), DeliveryActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), "Rol no reconocido", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveTokenToStorage(String token) {
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("access_token", token);
+        editor.apply();
+    }
+
+    private void saveRoleToStorage(int role) {
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("user_role", role);
+        editor.apply();
     }
 }
