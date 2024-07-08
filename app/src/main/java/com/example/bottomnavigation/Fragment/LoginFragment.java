@@ -109,7 +109,7 @@ public class LoginFragment extends Fragment {
             fragmentTransaction.replace(R.id.ProfileFragment, perfilFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-        } else if (role == 2) {  // Asumiendo que 2 es para repartidores
+        } else if (role == 3) {  // Asumiendo que 3 es para repartidores
             Intent intent = new Intent(getActivity(), DeliveryActivity.class);
             startActivity(intent);
         } else {

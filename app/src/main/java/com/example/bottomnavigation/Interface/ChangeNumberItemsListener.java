@@ -1,5 +1,5 @@
 package com.example.bottomnavigation.Interface;
 
-public interface ChangeNumberitemsListener {
+public interface ChangeNumberItemsListener {
     void changed();
 }

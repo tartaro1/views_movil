@@ -1,5 +1,6 @@
 package com.example.bottomnavigation.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,63 +12,57 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bottomnavigation.API.Product;
 import com.example.bottomnavigation.Activity.ShowDetailActivity;
-import com.example.bottomnavigation.Domain.FoodDomain;
 import com.example.bottomnavigation.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.ViewHolder> {
+    private List<Product> RecommendedDomains;
+    private Context context;
 
-    ArrayList<FoodDomain> RecommendedDomains;
-
-    public RecommendedAdapter(ArrayList<FoodDomain> recommendedDomains){
-        this.RecommendedDomains = recommendedDomains;
+    public RecommendedAdapter(List<Product> RecommendedDomains) {
+        this.RecommendedDomains = RecommendedDomains;
     }
+
     @NonNull
     @Override
-    public  ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_recomendados,parent, false);
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_recomendados, parent, false);
         return new ViewHolder(inflate);
     }
 
     @Override
-    public  void  onBindViewHolder(@NonNull ViewHolder holder, int position){
-        holder.title.setText(RecommendedDomains.get(position).getTitle());
-        holder.fee.setText(String.valueOf(RecommendedDomains.get(position).getFee()));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product food = RecommendedDomains.get(position);
+        holder.title.setText(food.getNombreProducto());
 
+        Glide.with(context)
+                .load(food.getImagen())
+                .into(holder.pic);
 
-        int drawableResourceId = holder.itemView.getContext().getResources()
-                .getIdentifier(RecommendedDomains.get(position).getPic(),"drawable",
-                        holder.itemView.getContext().getPackageName());
-
-        Glide.with(holder.itemView.getContext()).
-                load(drawableResourceId).
-                into(holder.pic);
-
-        holder.addBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
-            intent.putExtra("object", RecommendedDomains.get(position));
-            holder.itemView.getContext().startActivity(intent);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ShowDetailActivity.class);
+            intent.putExtra("object", food);
+            context.startActivity(intent);
         });
     }
 
-
     @Override
-    public int getItemCount() { return RecommendedDomains.size();}
+    public int getItemCount() {
+        return RecommendedDomains.size();
+    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-
-        TextView title,fee;
-        ImageView pic,addBtn;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView title;
+        ImageView pic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.Rectitle);
             pic = itemView.findViewById(R.id.Recomeimg);
-            fee = itemView.findViewById(R.id.RecomePrecio);
-            addBtn = itemView.findViewById(R.id.addBtn);
         }
     }
 }

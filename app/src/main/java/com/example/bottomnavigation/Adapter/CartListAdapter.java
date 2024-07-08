@@ -11,25 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.API.Product;
 import com.example.bottomnavigation.Helper.ManagementCart;
-import com.example.bottomnavigation.Interface.ChangeNumberitemsListener;
+import com.example.bottomnavigation.Interface.ChangeNumberItemsListener;
 import com.example.bottomnavigation.R;
 
 import java.util.ArrayList;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder> {
 
-    ArrayList<FoodDomain> listFooSelected;
+    private ArrayList<Product> listFooSelected;
     private ManagementCart managementCart;
-    ChangeNumberitemsListener changerNumberitemListener;
+    private ChangeNumberItemsListener changerNumberitemListener;
 
-    public CartListAdapter(ArrayList<FoodDomain> listFooSelectd, Context context, ChangeNumberitemsListener changerNumberitemListener){
-        this.listFooSelected = listFooSelectd;
-        managementCart = new ManagementCart(context);
+    public CartListAdapter(ArrayList<Product> listFooSelected, Context context, ChangeNumberItemsListener changerNumberitemListener) {
+        this.listFooSelected = listFooSelected;
+        this.managementCart = new ManagementCart(context);
         this.changerNumberitemListener = changerNumberitemListener;
     }
-
 
     @NonNull
     @Override
@@ -39,50 +38,50 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
     @Override
-    public  void  onBindViewHolder(@NonNull ViewHolder holder, int position){
-        holder.title.setText(listFooSelected.get(position).getTitle());
-        holder.precioUnidadItem.setText("$"+ listFooSelected.get(position).getFee());
-        holder.totalEachItem.setText("$"+ Math.round((listFooSelected.get(position).getNumberInCart()*listFooSelected.get(position).getFee())));
-        holder.num.setText(String.valueOf(listFooSelected.get(position).getNumberInCart()));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product product = listFooSelected.get(position);
+        holder.title.setText(product.getNombreProducto());
+        holder.precioUnidadItem.setText("$" + product.getPrecioVenta());
 
+        double totalPrice = product.getNumberInCart() * Double.parseDouble(product.getPrecioVenta());
+        holder.totalEachItem.setText("$" + String.format("%.2f", totalPrice));
 
-        int drawableReourceId = holder.itemView.getContext().getResources()
-                .getIdentifier(listFooSelected.get(position).getPic(),"drawable",
-                        holder.itemView.getContext().getPackageName());
+        holder.num.setText(String.valueOf(product.getNumberInCart()));
 
-        Glide.with(holder.itemView.getContext()).
-                load(drawableReourceId).
-                into(holder.imagen);
+        Glide.with(holder.itemView.getContext())
+                .load(product.getImagen())
+                .into(holder.imagen);
 
         holder.plusItem.setOnClickListener(v -> {
-            managementCart.plusNumberFood(listFooSelected, position, () -> {
+            managementCart.plusNumberProduct(listFooSelected, position, () -> {
                 notifyDataSetChanged();
                 changerNumberitemListener.changed();
             });
         });
 
-        holder.minusItem.setOnClickListener(v -> managementCart.miplusNumberFood(listFooSelected, position, () -> {
-            notifyDataSetChanged();
-            changerNumberitemListener.changed();
-        }));
+        holder.minusItem.setOnClickListener(v -> {
+            managementCart.minusNumberProduct(listFooSelected, position, () -> {
+                notifyDataSetChanged();
+                changerNumberitemListener.changed();
+            });
+        });
     }
 
     @Override
-    public int getItemCount() { return listFooSelected.size();}
+    public int getItemCount() {
+        return listFooSelected.size();
+    }
 
-    // --Commented out by Inspection (4/06/24, 8:50 PM):public abstract void changerd();
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, precioUnidadItem;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView title, precioUnidadItem, totalEachItem, num;
         ImageView imagen, plusItem, minusItem;
-        TextView totalEachItem, num;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.titleTxt); // Cambiar a titleTxt si ese es el ID en el diseño
-            imagen = itemView.findViewById(R.id.picCart); // Cambiar a picCart si ese es el ID en el diseño
-            precioUnidadItem = itemView.findViewById(R.id.feeEachTxt); // Cambiar a feeEachTxt si ese es el ID en el diseño
-            totalEachItem = itemView.findViewById(R.id.totalEachTxt); // Cambiar a totalEachTxt si ese es el ID en el diseño
+            title = itemView.findViewById(R.id.titleTxt);
+            imagen = itemView.findViewById(R.id.picCart);
+            precioUnidadItem = itemView.findViewById(R.id.feeEachTxt);
+            totalEachItem = itemView.findViewById(R.id.totalEachTxt);
             plusItem = itemView.findViewById(R.id.plusCardBtn);
             minusItem = itemView.findViewById(R.id.minusCardBtn);
             num = itemView.findViewById(R.id.numberItemTxT);

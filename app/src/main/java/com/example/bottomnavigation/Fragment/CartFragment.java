@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bottomnavigation.Adapter.CartListAdapter;
 import com.example.bottomnavigation.Helper.ManagementCart;
-import com.example.bottomnavigation.Interface.ChangeNumberitemsListener;
+import com.example.bottomnavigation.Interface.ChangeNumberItemsListener;
 import com.example.bottomnavigation.R;
 
 public class CartFragment extends Fragment {
@@ -47,7 +47,7 @@ public class CartFragment extends Fragment {
     private void initList(View view) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         recyclerViewList.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdapter(managementCart.getListCart(), requireContext(), new ChangeNumberitemsListener() {
+        adapter = new CartListAdapter(managementCart.getListCart(), requireContext(), new ChangeNumberItemsListener() {
             @Override
             public void changed() {
                 calculateCart();

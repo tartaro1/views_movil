@@ -13,8 +13,12 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     @Headers("Content-Type: application/json")
-    @GET("orders")
+    @GET("orders/")
     Call<List<OrderDomain>> getOrders();
+
+    @Headers("Content-Type: application/json")
+    @GET("products")
+    Call<List<Product>> getProducts();
 
     @Headers("Content-Type: application/json")
     @POST("users")

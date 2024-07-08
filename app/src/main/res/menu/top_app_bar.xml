@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/edit"
+        android:title="edit"
+        android:contentDescription="Descripcion"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/baseline_person_24"
+        android:title="favoritos"
+        android:contentDescription="Descripcion"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/exit"
+        android:title="Cerrar"
+        android:contentDescription="description_more"
+        app:showAsAction="never" />
+
+</menu>

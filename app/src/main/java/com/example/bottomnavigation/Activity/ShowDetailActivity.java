@@ -1,26 +1,24 @@
 package com.example.bottomnavigation.Activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.API.Product;
 import com.example.bottomnavigation.Helper.ManagementCart;
 import com.example.bottomnavigation.R;
 
 public class ShowDetailActivity extends AppCompatActivity {
-
     private TextView addToCartBtn;
-    private TextView TitleTxT, feeTxT, descripcionTxT, numberOrderTxT, totalPriceTxT,timeTxT;
-    private RatingBar RatingBar;
-    private ImageView plusBtn, minusBtn, picFood;
-    private FoodDomain object;
+    private TextView titleTxt, priceTxt, descriptionTxt, numberOrderTxt, brandTxt, categoryTxt, providerTxt, stockTxt;
+    private ImageView plusBtn, minusBtn, productPic;
+    private RatingBar ratingBar;
+    private Product object;
     private int numberOrder = 1;
     private ManagementCart managementCart;
 
@@ -30,68 +28,65 @@ public class ShowDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_detail);
 
         managementCart = new ManagementCart(this);
-
         initView();
         getBundle();
     }
 
     private void getBundle() {
-        object = (FoodDomain) getIntent().getSerializableExtra("object");
+        object = (Product) getIntent().getSerializableExtra("object");
 
-        @SuppressLint("DiscouragedApi") int drawableResourceId = this.getResources().getIdentifier(object.getPic(), "drawable", this.getPackageName());
-            Glide.with(this)
-                    .load(drawableResourceId)
-                    .into(picFood);
+        if (object == null) {
+            Toast.makeText(this, "Error: No se pudo cargar el producto", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-            TitleTxT.setText(object.getTitle());
-            feeTxT.setText("$" + object.getFee());
-            descripcionTxT.setText(object.getDescripcion());
-            numberOrderTxT.setText(String.valueOf(numberOrder));
-//            caloryTxT.setText(object.getCalories()+"calorias");
-            RatingBar.setRating((float) object.getStar());
-            timeTxT.setText(object.getTime());
-            totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
+        Glide.with(this)
+                .load(object.getImagen())
+                .into(productPic);
 
-        plusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberOrder = numberOrder + 1;
-                numberOrderTxT.setText(String.valueOf(numberOrder));
-                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
-            }
-        });
-        minusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (numberOrder > 1) {
-                    numberOrder = numberOrder - 1;
-                }
-                numberOrderTxT.setText(String.valueOf(numberOrder));
-                totalPriceTxT.setText("$" + Math.round(numberOrder * object.getFee()));
-            }
+        titleTxt.setText(object.getNombreProducto());
+        priceTxt.setText("$" + object.getPrecioVenta());
+        descriptionTxt.setText(object.getDescripcion());
+        numberOrderTxt.setText(String.valueOf(numberOrder));
+        brandTxt.setText("Marca: " + object.getMarca());
+        categoryTxt.setText("Categoría: " + object.getID_Categoria());
+        providerTxt.setText("Proveedor: " + object.getID_Proveedor());
+        stockTxt.setText("Stock: " + object.getStock());
+        ratingBar.setRating(object.getCalificacion());
+
+        plusBtn.setOnClickListener(v -> {
+            numberOrder++;
+            numberOrderTxt.setText(String.valueOf(numberOrder));
         });
 
-        addToCartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                object.setNumberInCart(numberOrder);
-                managementCart.insertFood(object);
+        minusBtn.setOnClickListener(v -> {
+            if (numberOrder > 1) {
+                numberOrder--;
+                numberOrderTxt.setText(String.valueOf(numberOrder));
             }
+        });
+
+        addToCartBtn.setOnClickListener(v -> {
+            object.setNumberInCart(numberOrder);
+            managementCart.insertProduct(object);
+            Toast.makeText(this, "Añadido al carrito", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void initView() {
         addToCartBtn = findViewById(R.id.addToCartBtn);
-        TitleTxT = findViewById(R.id.titleTxT);
-        feeTxT = findViewById(R.id.priceTxT);
-        descripcionTxT = findViewById(R.id.descriptionTxT);
-        numberOrderTxT = findViewById(R.id.numberItemTxT);
-        plusBtn = findViewById(R.id.plusCardBtn);
-        minusBtn = findViewById(R.id.minusCardBtn);
-        picFood = findViewById(R.id.foodPic);
-        totalPriceTxT = findViewById(R.id.totalPriceTxT);
-        RatingBar = findViewById(R.id.ratingBar);
-//        caloryTxT = findViewById(R.id.VicaloriesTxt);
-        timeTxT = findViewById(R.id.detallesTxT);
+        titleTxt = findViewById(R.id.titleTxt);
+        priceTxt = findViewById(R.id.priceTxt);
+        descriptionTxt = findViewById(R.id.descriptionTxt);
+        numberOrderTxt = findViewById(R.id.numberOrderTxt);
+        plusBtn = findViewById(R.id.plusBtn);
+        minusBtn = findViewById(R.id.minusBtn);
+        productPic = findViewById(R.id.productPic);
+        brandTxt = findViewById(R.id.brandTxt);
+        categoryTxt = findViewById(R.id.categoryTxt);
+        providerTxt = findViewById(R.id.providerTxt);
+        stockTxt = findViewById(R.id.stockTxt);
+        ratingBar = findViewById(R.id.ratingBar);
     }
 }

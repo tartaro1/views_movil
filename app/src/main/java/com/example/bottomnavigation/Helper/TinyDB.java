@@ -10,7 +10,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.bottomnavigation.Domain.FoodDomain;
+import com.example.bottomnavigation.API.Product;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -27,6 +27,12 @@ public class TinyDB {
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
 
+    public void debugPrintCart(String key) {
+        ArrayList<String> objStrings = getListString(key);
+        for (String jObjString : objStrings) {
+            Log.d("TinyDB", "Cart item: " + jObjString);
+        }
+    }
     public TinyDB(Context appContext) {
         preferences = PreferenceManager.getDefaultSharedPreferences(appContext);
     }
@@ -305,14 +311,14 @@ public class TinyDB {
     }
 
 
-    public ArrayList<FoodDomain> getListObject(String key){
+    public ArrayList<Product> getListObject(String key){
         Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<FoodDomain> playerList =  new ArrayList<FoodDomain>();
+        ArrayList<Product> playerList =  new ArrayList<Product>();
 
         for(String jObjString : objStrings){
-            FoodDomain player  = gson.fromJson(jObjString,  FoodDomain.class);
+            Product player  = gson.fromJson(jObjString,  Product.class);
             playerList.add(player);
         }
         return playerList;
@@ -467,11 +473,11 @@ public class TinyDB {
         putString(key, gson.toJson(obj));
     }
 
-    public void putListObject(String key, ArrayList<FoodDomain> playerList){
+    public void putListObject(String key, ArrayList<Product> playerList){
         checkForNullKey(key);
         Gson gson = new Gson();
         ArrayList<String> objStrings = new ArrayList<String>();
-        for(FoodDomain player: playerList){
+        for(Product player: playerList){
             objStrings.add(gson.toJson(player));
         }
         putListString(key, objStrings);

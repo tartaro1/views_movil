@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -16,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="?attr/colorPrimary"
             android:layout_marginBottom="16dp"/>
 
         <TextView
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
         <TextView
@@ -52,6 +54,7 @@
             android:id="@+id/nombreCliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="cliente"
             android:textSize="18sp"
             android:layout_marginBottom="8dp"/>
 
@@ -59,8 +62,16 @@
             android:id="@+id/idRepartidor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="repartidor"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="actualiar estado"
+            android:layout_gravity="center"
+            android:id="@+id/buttonActualizarEstado"/>
 
     </LinearLayout>
 

@@ -14,6 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/editext_login_bkg"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -21,23 +22,57 @@
             android:id="@+id/idPedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Pedido #"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:id="@+id/estadoPedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:text="Estado:"
             android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/direccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Dirección:"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/precioVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Precio: $"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/fechaPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Fecha:"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/nombreCliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:text="Cliente:"
             android:textSize="14sp"/>
 
+        <TextView
+            android:id="@+id/idRepartidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{order.getID_Pedido()}"
+            android:textSize="14sp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.HomeFragment">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/ScreenBackground"
         android:layout_gravity="top">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,11 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="20dp"
-                android:text="Categorias"
+                android:text="Categorías"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
-                app:layout_constraintTop_toBottomOf="@+id/carViewSlider"/>
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCat"
@@ -79,32 +75,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Recomendados"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewRec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="22dp"
-                android:paddingEnd="22dp"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:id="@+id/titleDescubre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Descubre productos"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewDescubre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
@@ -119,9 +93,7 @@
                 android:layout_marginLeft="20dp"
                 android:text="Carnes"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/carViewSlider"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewCat"/>
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCarnes"
@@ -133,7 +105,5 @@
                 android:layout_marginBottom="60dp" />
 
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>
