@@ -9,7 +9,9 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
     @Headers("Content-Type: application/json")
@@ -30,4 +32,11 @@ public interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
+
+    @PATCH("orders/state/{id}")
+    Call<OrderDomain> updateOrderState(
+            @Header("Authorization") String token,
+            @Path("id") int orderId,
+            @Body OrderStateUpdate stateUpdate
+    );
 }

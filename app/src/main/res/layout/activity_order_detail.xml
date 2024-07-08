@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:text="actualiar estado"
             android:layout_gravity="center"
-            android:id="@+id/buttonActualizarEstado"/>
+            android:id="@+id/updateButton"/>
 
     </LinearLayout>
 
